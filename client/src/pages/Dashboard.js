@@ -1,12 +1,10 @@
 import React from 'react';
-import './acquisitions';
 
 function Dashboard() {
     return (
         <div>
-            <div style={{width: '800px'}}><canvas id="acquisitions"></canvas></div>
-
-            <script type="module" src="./acquisitions.js" defer></script>
+            <h1>Dashboard</h1>
+            <p>This is the Dashboard page.</p>
         </div>
     );
 }

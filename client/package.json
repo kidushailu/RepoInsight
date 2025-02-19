@@ -2,6 +2,9 @@
   "name": "client",
   "version": "0.1.0",
   "private": true,
+  "devDependencies": {
+    "parcel": "^2.6.2"
+  },
   "dependencies": {
     "@testing-library/dom": "^10.4.0",
     "@testing-library/jest-dom": "^6.6.3",
@@ -13,6 +16,7 @@
     "react-router-dom": "^7.1.5",
     "react-scripts": "^5.0.1",
     "web-vitals": "^2.1.4",
+    "@cubejs-client/core": "^0.31.0",
     "chart.js": "^4.0.0"
   },
   "scripts": {
