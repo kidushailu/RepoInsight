@@ -1,28 +1,35 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { useMatch, useResolvedPath } from 'react-router-dom';
 import './Navbar.css';
 
 function Navbar() {
     return (
-        <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
-            <div className="container">
-                <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navMainMenu" aria-controls="navMainMenu" aria-expanded="false" aria-label="Toggle navigation">
-                    <span className="navbar-toggler-icon"></span>
-                </button>
-                <div id="navMainMenu" className="navbar-collapse collapse">
-                    <div className="navbar-nav ml-auto nav-links">
-                        <Link to="/" className="nav-item nav-link">Home</Link>
-                        <Link to="/line-modification" className="nav-item nav-link">Line Modification</Link>
-                        <Link to="/individual-insights" className="nav-item nav-link">Individual Insights</Link>
-                        <Link to="/dashboard" className="nav-item nav-link">Dashboard</Link>
-                        <Link to="/login" className="nav-item nav-link">Login</Link>
-                        <Link to="/sign-up" className="nav-item nav-link">Sign Up</Link>
-                        <Link to="/landing" className="nav-item nav-link">Landing</Link>
-                    </div>
-                </div>
-            </div>
+        <nav className="nav">
+            <Link to="/" className="site-title">RepoInsight</Link>
+            <ul>
+            <CustomLink to="/" >Home</CustomLink>
+            <CustomLink to="/line-modification">Line Modification</CustomLink>
+            <CustomLink to="/individual-insights">Individual Insights</CustomLink>
+            <CustomLink to="/dashboard">Dashboard</CustomLink>
+            <CustomLink to="/login">Login</CustomLink>
+            <CustomLink to="/sign-up">Sign Up</CustomLink>
+            </ul>
         </nav>
-    );
+    )
+}
+
+function CustomLink({ to, children, ...props }) {
+    const resolvedPath = useResolvedPath(to)
+    const isActive = useMatch({ path: resolvedPath.pathname, end: true })
+  
+    return (
+      <li className={isActive ? "active" : ""}>
+        <Link to={to} {...props}>
+          {children}
+        </Link>
+      </li>
+    )
 }
 
 export default Navbar;
