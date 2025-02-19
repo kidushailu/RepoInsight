@@ -7,24 +7,34 @@ import Dashboard from './pages/Dashboard';
 import Login from './pages/Login';
 import SignUp from './pages/SignUp';
 import Navbar from './components/Navbar';
-import Landing from './pages/Landing';
+// import Landing from './pages/Landing';
+import Footer from './components/Footer';
 
 function App() {
   return (
+    <div className="App">
     <Router>
-      <div className="App">
-        <Navbar />
-        <Routes>
-          <Route path="/" element={<h1>Welcome to the Home Page</h1>} />
-          <Route path="/line-modification" element={<LineModification />} />
-          <Route path="/individual-insights" element={<IndividualInsights />} />
-          <Route path="/dashboard" element={<Dashboard />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/sign-up" element={<SignUp />} />
-          <Route path="/landing" element={<Landing />} />
-        </Routes>
-      </div>
+      <Navbar />
+      <Rout />
+      <Footer />
     </Router>
+    </div>
+  );
+}
+
+// Define the routes for the application
+function Rout() {
+  return (
+    <div className="routes">
+    <Routes>
+      <Route path="/" element={<h3>Home</h3>} />
+      <Route path="/line-modification" element={<LineModification />} />
+      <Route path="/individual-insights" element={<IndividualInsights />} />
+      <Route path="/dashboard" element={<Dashboard />} />
+      <Route path="/login" element={<Login />} />
+      <Route path="/sign-up" element={<SignUp />} />
+    </Routes>
+    </div>
   );
 }
 
