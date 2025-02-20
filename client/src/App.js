@@ -29,9 +29,9 @@ function Rout() {
     <div className="routes">
     <Routes>
       <Route path="/" element={<h3>Home</h3>} />
-      <Route path="/line-modification" element={<LineModification />} />
-      <Route path="/individual-insights" element={<IndividualInsights />} />
       <Route path="/dashboard" element={<Dashboard />} />
+      <Route path="/individual-insights" element={<IndividualInsights />} />
+      <Route path="/line-modification" element={<LineModification />} />
       <Route path="/login" element={<Login />} />
       <Route path="/sign-up" element={<SignUp />} />
     </Routes>
