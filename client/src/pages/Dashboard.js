@@ -4,7 +4,7 @@ import './Dashboard.css'; // Assuming you have a CSS file for styles
 
 export default function Dashboard() {
   const [search, setSearch] = useState("");
-  
+
   const data = [
     { month: "January", commits: 50, pullRequests: 40 },
     { month: "February", commits: 60, pullRequests: 50 },
@@ -21,50 +21,58 @@ export default function Dashboard() {
         <h1 className="title">Dashboard</h1>
         <button className="search-button" variant="outline">View Repository</button>
       </header>
-      
-      <div className="metric-row">
-        <div className="commits">Commits: <strong>873</strong></div>
-        <div className="num-files">Total Files: <strong>345</strong></div>
-        <div className="pull-requests">Pull Requests: <strong>78</strong></div>
-        <div className="top-contributors">
-            Top Contributors: 
-            <strong>
-                <ul>
+
+      <div class="container text-center">
+        <div class="row align-items-start">
+          <div class="col">
+            <div className="metric-row">
+              <div className="commits">Commits: <strong>873</strong></div>
+              <div className="num-files">Total Files: <strong>345</strong></div>
+              <div className="pull-requests">Pull Requests: <strong>78</strong></div>
+              <div className="top-contributors">
+                Top Contributors:
+                <strong>
+                  <ul>
                     <li>Mark</li>
                     <li>Jeff</li>
                     <li>Sarah</li>
-                </ul>
-            </strong>
-        </div>
-      </div>
-      
-      <div className="grid grid-cols-2 gap-4 mt-6">
-        <div className="charts">
-          <div className="line-chart">
-            <h2>Commit Trends</h2>
-            <LineChart data={data} width={400} height={200}>
-              <XAxis dataKey="month" />
-              <YAxis />
-              <Line type="monotone" dataKey="commits" stroke="#8884d8" />
-            </LineChart>
+                  </ul>
+                </strong>
+              </div>
+            </div>
           </div>
-          <div className="bar-chart">
-            <h2>Pull Request Trends</h2>
-            <BarChart data={data} width={400} height={200}>
-              <XAxis dataKey="month" />
-              <YAxis />
-              <Bar dataKey="pullRequests" fill="#82ca9d" />
-            </BarChart>
+          <div class="col">
+            <div className="grid grid-cols-2 gap-4 mt-6">
+              <div className="charts">
+                <div className="line-chart">
+                  <h2>Commit Trends</h2>
+                  <LineChart data={data} width={400} height={200}>
+                    <XAxis dataKey="month" />
+                    <YAxis />
+                    <Line type="monotone" dataKey="commits" stroke="#8884d8" />
+                  </LineChart>
+                </div>
+                <div className="bar-chart">
+                  <h2>Pull Request Trends</h2>
+                  <BarChart data={data} width={400} height={200}>
+                    <XAxis dataKey="month" />
+                    <YAxis />
+                    <Bar dataKey="pullRequests" fill="#82ca9d" />
+                  </BarChart>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col">
+            <div className="user-search">
+              <input
+                placeholder="Search for user"
+                value={search}
+                onChange={(e) => setSearch(e.target.value)}
+              />
+            </div>
           </div>
         </div>
-      </div>
-      
-      <div className="user-search">
-        <input
-          placeholder="Search for user"
-          value={search}
-          onChange={(e) => setSearch(e.target.value)}
-        />
       </div>
     </div>
   );

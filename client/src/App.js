@@ -9,6 +9,7 @@ import SignUp from './pages/SignUp';
 import Navbar from './components/Navbar';
 // import Landing from './pages/Landing';
 import Footer from './components/Footer';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
   return (
