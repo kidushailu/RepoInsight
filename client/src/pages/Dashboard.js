@@ -28,7 +28,7 @@ export default function Dashboard() {
             <br />
           </div>
           <div class="col">
-            <div className="metric-row">
+            <div className="dashbox metric-row">
               <h2>Metrics</h2>
               <div className="commits">Commits: <strong>873</strong></div>
               <div className="num-files">Total Files: <strong>345</strong></div>
@@ -47,7 +47,7 @@ export default function Dashboard() {
           </div>
           <div class="col">
             <div className="grid grid-cols-2 gap-4 mt-6">
-              <div className="charts">
+              <div className="dashbox charts">
                 <div className="line-chart">
                   <h2>Commit Trends</h2>
                   <LineChart data={data} width={400} height={200}>
@@ -68,7 +68,7 @@ export default function Dashboard() {
             </div>
           </div>
           <div class="col">
-            <div className="user-search">
+            <div className="dashbox user-search">
               <h2>Search</h2>
               <input
                 placeholder="Search for user"

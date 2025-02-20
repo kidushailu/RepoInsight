@@ -2,3 +2,5 @@ bg: #f9f9ff
 box: #dbe2f9
 borders: #c4c6d0
 blue: #96dcf8
+
+correct line endings

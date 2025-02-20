@@ -34,3 +34,9 @@ h2, .metric-row h2 {
 input {
   text-align: left !important;
 }
+
+.dashbox {
+  background-color: #dbe2f9;
+  border-radius: 10px;
+  padding: 15px;
+}
