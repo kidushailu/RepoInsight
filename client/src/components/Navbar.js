@@ -6,7 +6,10 @@ import './Navbar.css';
 function Navbar() {
     return (
         <nav className="nav">
-            <Link to="/" className="site-title">RepoInsight</Link>
+            <Link to="/" className="site-title">
+            <img width="65" height="65" src="RepoInsight-logo-pptexport.png" alt="RepoInsight logo" className="site-logo"></img>
+            <span>RepoInsight</span>
+            </Link>
             <ul>
             <CustomLink to="/" >Home</CustomLink>
             <CustomLink to="/line-modification">Line Modification</CustomLink>
