@@ -1,0 +1,27 @@
+.container-line-modification {
+    display: flex;
+    flex-direction: column;
+    background-color: #fff;
+    height: 100vh;
+    justify-content: center;
+    padding: 5rem;
+}
+
+.header {
+    display: inline-flex;
+    text-align: left;
+    gap: 10px;
+    width: 100%;
+}
+
+.back-button {
+    background-color: inherit;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+
+.image {
+    width: 100%;
+    height: auto;
+}
