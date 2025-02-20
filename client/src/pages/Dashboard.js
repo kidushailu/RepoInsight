@@ -26,6 +26,7 @@ export default function Dashboard() {
         <div class="row align-items-start">
           <div class="col">
             <div className="metric-row">
+              <h2>Metrics</h2>
               <div className="commits">Commits: <strong>873</strong></div>
               <div className="num-files">Total Files: <strong>345</strong></div>
               <div className="pull-requests">Pull Requests: <strong>78</strong></div>
@@ -65,6 +66,7 @@ export default function Dashboard() {
           </div>
           <div class="col">
             <div className="user-search">
+            <h2>Search</h2>
               <input
                 placeholder="Search for user"
                 value={search}

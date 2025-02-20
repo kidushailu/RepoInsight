@@ -1,15 +1,23 @@
 .container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 100vh; /* Full viewport height */
-    text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  /* Full viewport height */
+  text-align: center;
 }
 
 .container header {
-    display: flex 
-    justify-between 
-    items-center
-    pb-4
+  display: flex justify-between items-center pb-4
+}
+
+h2 {
+  text-align: left !important;
+  margin-bottom: 0.5rem !important;
+}
+
+.col div,
+.col div div {
+  margin-bottom: 1rem !important;
 }
