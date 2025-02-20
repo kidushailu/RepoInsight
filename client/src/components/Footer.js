@@ -4,9 +4,9 @@ import { Link } from "react-router-dom";
 
 function Footer() {
     return (
-        <div className="container">
+        <div className="footer">
             <div className="footer-title">
-                <h4>RepoInsight</h4>
+                <Link to="/">RepoInsight</Link>
             </div>
             <div className="footer-links">
                 <Link to="/about-us">About Us</Link>

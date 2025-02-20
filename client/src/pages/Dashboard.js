@@ -1,6 +1,6 @@
 import { BarChart, LineChart, XAxis, YAxis, Bar, Line } from "recharts";
 import { useState } from "react";
-import './Dashboard.css'; // Assuming you have a CSS file for styles
+import './Dashboard.css';
 
 export default function Dashboard() {
   const [search, setSearch] = useState("");
@@ -29,11 +29,11 @@ export default function Dashboard() {
         <div className="top-contributors">
             Top Contributors: 
             <strong>
-                <ul>
+                <ol>
                     <li>Mark</li>
                     <li>Jeff</li>
                     <li>Sarah</li>
-                </ul>
+                </ol>
             </strong>
         </div>
       </div>
