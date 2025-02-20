@@ -1,12 +1,77 @@
-import React from 'react';
+import { BarChart, LineChart, XAxis, YAxis, Bar, Line } from "recharts";
+import { useState } from "react";
+import './Dashboard.css';
 
-function IndividualInsights() {
-    return (
-        <div>
-            <h1>Individual Insights</h1>
-            <p>This is the Individual Insights page.</p>
+export default function Dashboard() {
+  const [search, setSearch] = useState("");
+
+  const data = [
+    { month: "January", commits: 50, pullRequests: 40 },
+    { month: "February", commits: 60, pullRequests: 50 },
+    { month: "March", commits: 80, pullRequests: 70 },
+    { month: "April", commits: 90, pullRequests: 80 },
+    { month: "May", commits: 70, pullRequests: 75 },
+    { month: "June", commits: 60, pullRequests: 65 },
+    { month: "July", commits: 50, pullRequests: 45 },
+  ];
+
+  return (
+    <div className="container">
+      <header className="flex justify-between items-center pb-4">
+        <h1 className="title">User</h1>
+        <button className="search-button" variant="outline">View Repository</button>
+      </header>
+
+      <div class="container text-center">
+        <div class="row align-items-start">
+          <div class="col">
+            <br />
+          </div>
+          <div class="col">
+            <div className="dashbox metric-row">
+              <h2>Metrics</h2>
+              <div className="commits">Commits: <strong>57</strong></div>
+              <div className="num-files">Comments: <strong>94</strong></div>
+              <div className="pull-requests">Pull Requests: <strong>12</strong></div>
+            </div>
+          </div>
+          <div class="col">
+            <div className="grid grid-cols-2 gap-4 mt-6">
+              <div className="charts">
+                <div className="dashbox line-chart">
+                  <h2>Commit Trends</h2>
+                  <LineChart data={data} width={400} height={200}>
+                    <XAxis dataKey="month" />
+                    <YAxis />
+                    <Line type="monotone" dataKey="commits" stroke="#8884d8" />
+                  </LineChart>
+                </div>
+                <div className="dashbox bar-chart">
+                  <h2>Pull Request Trends</h2>
+                  <BarChart data={data} width={400} height={200}>
+                    <XAxis dataKey="month" />
+                    <YAxis />
+                    <Bar dataKey="pullRequests" fill="#82ca9d" />
+                  </BarChart>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col">
+            <div className="dashbox user-search">
+              <h2>Search</h2>
+              <input
+                placeholder="Search for user"
+                value={search}
+                onChange={(e) => setSearch(e.target.value)}
+              />
+            </div>
+          </div>
+          <div class="col">
+            <br />
+          </div>
         </div>
-    );
+      </div>
+    </div>
+  );
 }
-
-export default IndividualInsights;
