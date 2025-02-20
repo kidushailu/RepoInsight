@@ -47,8 +47,8 @@ export default function Dashboard() {
           </div>
           <div class="col">
             <div className="grid grid-cols-2 gap-4 mt-6">
-              <div className="dashbox charts">
-                <div className="line-chart">
+              <div className="charts">
+                <div className="dashbox line-chart">
                   <h2>Commit Trends</h2>
                   <LineChart data={data} width={400} height={200}>
                     <XAxis dataKey="month" />
@@ -56,7 +56,7 @@ export default function Dashboard() {
                     <Line type="monotone" dataKey="commits" stroke="#8884d8" />
                   </LineChart>
                 </div>
-                <div className="bar-chart">
+                <div className="dashbox bar-chart">
                   <h2>Pull Request Trends</h2>
                   <BarChart data={data} width={400} height={200}>
                     <XAxis dataKey="month" />
