@@ -6,15 +6,16 @@ function Login() {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        // Handle login logic here
+        
+        // TODO: Handle login logic here
         console.log('Email:', email);
         console.log('Password:', password);
     };
 
     return (
-        <div>
+        <div className="d-flex flex-column align-items-center justify-content-center vh-100">
             <h1>Login</h1>
-            <form onSubmit={handleSubmit}>
+            <form onSubmit={handleSubmit} className='d-flex flex-column align-items-center justify-content-center'>
                 <div>
                     <label>Email:</label>
                     <input
