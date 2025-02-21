@@ -35,7 +35,7 @@ A web application designed to analyze GitHub repositories and provide detailed i
     npm start
 ```
 
-Project Structure
+### Project Structure
 ```sh
     repoinsight
     ├── client
@@ -59,14 +59,15 @@ Project Structure
     │   └── ...
     └── README.md
 ```
-Usage
+### Usage
 * Navigate to different sections using the navbar.
 * View detailed insights and statistics on the Dashboard.
 * Analyze individual contributions in the Individual Insights section.
 * Track line modifications in the Line Modification section.
 * Use the search bar to find specific repositories.
 
-References
+### References:
+
 [React](https://reactjs.org/)
 [React Router](https://reactrouter.com/)
 [Bootstrap](https://getbootstrap.com/)
