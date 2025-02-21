@@ -10,6 +10,9 @@ function Navbar() {
             <img width="65" height="65" src="RepoInsight-logo-pptexport.png" alt="RepoInsight logo" className="site-logo"></img>
             <span>RepoInsight</span>
           </Link>
+          <div className='repo-search'>
+            <input type="text" placeholder="Search for a repository" className='search-bar'></input>
+          </div>
           <ul>
             <CustomLink to="/dashboard">Dashboard</CustomLink>
             <CustomLink to="/individual-insights">Individual Insights</CustomLink>
