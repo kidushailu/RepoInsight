@@ -2,6 +2,9 @@
   "name": "client",
   "version": "0.1.0",
   "private": true,
+  "devDependencies": {
+    "parcel": "^2.6.2"
+  },
   "dependencies": {
     "@cubejs-client/core": "^0.31.0",
     "@popperjs/core": "^2.11.8",
