@@ -1,4 +1,4 @@
-import { BarChart, LineChart, XAxis, YAxis, Bar, Line, Tooltip, Legend } from "recharts";
+import { BarChart, LineChart, XAxis, YAxis, Bar, Line, Tooltip, ResponsiveContainer } from "recharts";
 import { useState, useEffect } from "react";
 import './Dashboard.css';
 import { useLocation } from "react-router-dom";
@@ -104,77 +104,86 @@ export default function Dashboard() {
   
   return (
     <div className="container">
-      <header className="flex justify-between items-center pb-4">
-        <h1 className="title">Dashboard</h1>
+      <h3><strong>Dashboard</strong></h3>
+      <div className="header">
         {repoUrl && (
           <a href={repoUrl} target="_blank" rel="noopener noreferrer" className="button-link">
-            View Repository
-          </a>
-        )}      
-      </header>
-      <div class="container text-center">
-        <div class="row align-items-start">
-          <div class="col">
-            <br />
-          </div>
-          <div class="col">
-            <div className="dashbox metric-row">
-              <h2>Metrics</h2>
-              <div className="commits">Commits: <strong>{totalCommits}</strong></div>
-              <div className="num-files">Total Files: <strong>{filesCount}</strong></div>
-              <div className="pull-requests">Pull Requests: <strong>{totalPulls}</strong></div>
-              <div className="top-contributors">
-                Top Contributors:
-                <strong>
-                  <ol>
-                    {contributors.map((contributor) => (
-                      <li key={contributor.id}>{contributor.login}</li>
-                    ))}
-                  </ol>
-                </strong>
-              </div>
-            </div>
-          </div>
-          <div class="col">
-            <div className="grid grid-cols-2 gap-4 mt-6">
-              <div className="charts">
-                <div className="dashbox line-chart">
-                  <h2>Commit Trends</h2>
-                  <LineChart data={chartData} width={400} height={200}>
-                    <XAxis dataKey="month" />
-                    <YAxis />
-                    <Tooltip />
-                    <Legend />
-                    <Line type="monotone" dataKey="commits" stroke="#8884d8" />
-                  </LineChart>
-                </div>
-                <div className="dashbox bar-chart">
-                  <h2>Pull Request Trends</h2>
-                  <BarChart data={chartData} width={400} height={200}>
-                    <XAxis dataKey="month" />
-                    <YAxis />
-                    <Tooltip />
-                    <Legend />
-                    <Bar dataKey="pullRequests" fill="#82ca9d" />
-                  </BarChart>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col">
-            <div className="dashbox user-search">
-              <h2>Search</h2>
-              <input
-                placeholder="Search for user"
-                value={search}
-                onChange={(e) => setSearch(e.target.value)}
-              />
-            </div>
-          </div>
-          <div class="col">
-            <br />
+              View Repository
+            </a>
+        )}
+        <p>Repo: <strong>{repoUrl ? repoUrl.split('/')[4] : 'N/A'}</strong></p>
+      </div>
+      <div className="metrics">
+        <div className="stats">
+          <section className="commits">
+            <p>Commits</p>
+            <h1>{totalCommits}</h1>
+          </section>
+          <section className="files">
+            <p>Total Files</p>
+            <h1>{filesCount}</h1>
+          </section>
+          <section className="pulls">
+            <p>Pull Requests</p>
+            <h1>{totalPulls}</h1>
+          </section>
+          <section className="top-contributors">
+            <p>Top Contributors</p>
+            <strong>
+              <ol>
+                {contributors.map((contributor) => (
+                  <li key={contributor.id}>{contributor.login}</li>
+                ))}
+              </ol>
+            </strong>
+          </section>
+        </div>
+        <div className="visuals">
+          <p>Trend Graphs</p>
+          <div className="charts">
+            <section className="line-chart">
+              <p>Commits</p>
+              <ResponsiveContainer>
+                <LineChart data={chartData}>
+                  <XAxis dataKey="month" />
+                  <YAxis />
+                  <Tooltip />
+                  <Line dataKey="commits" stroke="#8884d8" />
+                </LineChart>
+              </ResponsiveContainer>
+            </section>
+            <section className="bar-chart">
+              <p>Pull Requests</p>
+              <ResponsiveContainer>
+                <BarChart data={chartData}>
+                  <XAxis dataKey="month" />
+                  <YAxis />
+                  <Tooltip />
+                  <Bar dataKey="pullRequests" fill="#82ca9d" />
+                </BarChart>
+              </ResponsiveContainer>
+            </section>
           </div>
         </div>
+      </div>
+      <div className="users">
+        <section className="users-header">
+          <p><strong>All Users</strong></p>
+          <p>username</p>
+          <p>#contributions</p>
+        </section>
+        <section className="users-list">
+          {contributors.map((contributor) => (
+            <div key={contributor.id} className="user">
+              <p> </p>
+              <section>
+                <img src={contributor.avatar_url} alt="user" />
+                <p>{contributor.login}</p>
+              </section>
+              <p>{contributor.contributions}</p>
+            </div>
+          ))}
+        </section>
       </div>
     </div>
   );
