@@ -1,16 +1,13 @@
 .App {
-  text-align: center;
-  min-height: 100vh;
   display: flex;
   flex-direction: column;
+  min-height: 100vh;
   background-color: #f9f9ff;
 }
 
-.routes {
+.content {
   display: flex;
-  flex-direction: column;
-  align-items: center;
   justify-content: center;
-  height: 100vh;
-  text-align: center;
+  width: 70%;
+  margin: 0 auto;
 }
