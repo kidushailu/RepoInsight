@@ -7,7 +7,7 @@ import Dashboard from './pages/Dashboard';
 import Login from './pages/Login';
 import SignUp from './pages/SignUp';
 import Navbar from './components/Navbar';
-// import Landing from './pages/Landing';
+import Landing from './pages/Landing';
 import Footer from './components/Footer';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -28,7 +28,7 @@ function Rout() {
   return (
     <div className="routes">
     <Routes>
-      <Route path="/" element={<h3>Home</h3>} />
+      <Route path="/" element={<Landing />} />
       <Route path="/dashboard" element={<Dashboard />} />
       <Route path="/individual-insights" element={<IndividualInsights />} />
       <Route path="/line-modification" element={<LineModification />} />
