@@ -7,9 +7,9 @@ const Navbar = () => {
     <nav className="flex justify-between items-center p-4 shadow-md bg-white">
       <h1 className="text-xl font-bold">RepoInsight</h1>
       <div className="space-x-4">
-        <a href="#" className="text-gray-700">Analyze</a>
-        <a href="#" className="text-gray-700">Features</a>
-        <a href="#" className="text-gray-700">Contact Us</a>
+        <a href="#" className="text-gray-700">Analyze </a>
+        <a href="#" className="text-gray-700">Features </a>
+        <a href="#" className="text-gray-700">Contact Us </a>
         <a href="#" className="text-gray-700">Explore Insights</a>
         <button 
           onClick={() => navigate("/sign-up")}
