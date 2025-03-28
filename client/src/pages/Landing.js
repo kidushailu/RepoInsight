@@ -1,27 +1,38 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
-const Navbar = () => (
-  <nav className="flex justify-between items-center p-4 shadow-md bg-white">
-    <h1 className="text-xl font-bold">RepoInsight</h1>
-    <div className="space-x-4">
-      <a href="#" className="text-gray-700">Analyze</a>
-      <a href="#" className="text-gray-700">Features</a>
-      <a href="#" className="text-gray-700">Contact Us</a>
-      <a href="#" className="text-gray-700">Explore Insights</a>
-      <button className="bg-blue-600 text-white px-4 py-2 rounded">Sign up</button>
-    </div>
-  </nav>
-);
+const Navbar = () => {
+  const navigate = useNavigate();
+  return(
+    <nav className="flex justify-between items-center p-4 shadow-md bg-white">
+      <h1 className="text-xl font-bold">RepoInsight</h1>
+      <div className="space-x-4">
+        <a href="#" className="text-gray-700">Analyze </a>
+        <a href="#" className="text-gray-700">Features </a>
+        <a href="#" className="text-gray-700">Contact Us </a>
+        <a href="#" className="text-gray-700">Explore Insights</a>
+        <button 
+          onClick={() => navigate("/sign-up")}
+          className="bg-blue-600 text-white px-4 py-2 rounded">Sign up</button>
+      </div>
+    </nav>
+  );
+}; 
 
-const HeroSection = () => (
-  <section className="flex flex-col items-center text-center p-10 bg-gray-100">
-    <h2 className="text-4xl font-bold">Uncover Insights with RepoInsight</h2>
-    <p className="text-gray-600 max-w-2xl mt-2">
-      Unravel your repository’s potential with RepoInsight’s AI-powered analytics for enhanced understanding and visibility.
-    </p>
-    <button className="mt-4 bg-blue-600 text-white px-6 py-3 rounded">Sign up today</button>
-  </section>
-);
+const HeroSection = () => {
+  const navigate = useNavigate();
+  return(
+    <section className="flex flex-col items-center text-center p-10 bg-gray-100">
+      <h2 className="text-4xl font-bold">Uncover Insights with RepoInsight</h2>
+      <p className="text-gray-600 max-w-2xl mt-2">
+        Unravel your repository’s potential with RepoInsight’s AI-powered analytics for enhanced understanding and visibility.
+      </p>
+      <button 
+        onClick={() => navigate("/sign-up")}
+        className="mt-4 bg-blue-600 text-white px-6 py-3 rounded">Sign up today</button>
+    </section>
+  );
+};
 
 const FeaturesSection = () => {
   const features = [
