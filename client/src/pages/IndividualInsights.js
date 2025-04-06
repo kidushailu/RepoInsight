@@ -5,10 +5,12 @@ import { useLocation } from "react-router-dom";
 
 export default function IndividualInsights() {
   const location = useLocation();
-  const repoUrl = location.state?.repoUrl || "";
+  const repoUrl = location.state?.url || "";
+  const user = location.state?.user || "";
+  const contributions = location.state?.contributions || "";
   const [totalCommits, setTotalCommits] = useState(0);
   const [totalPulls, setTotalPulls] = useState(0);
-  const [filesCount, setFilesCount] = useState(0);
+  const [totalComments, setTotalComments] = useState(0);
   const [chartData, setChartData] = useState([
     { month: "January", commits: 0, pullRequests: 0 },
     { month: "February", commits: 0, pullRequests: 0 },
@@ -62,44 +64,28 @@ export default function IndividualInsights() {
     }
   }
 
-  const getFilesCount = async () => {
-    try {
-      const response = await fetch(`http://localhost:4000/api/searchRepo/files?repoUrl=${encodeURIComponent(repoUrl)}`);
-      if (response.ok) {
-        const data = await response.json();
-        setFilesCount(data);
-      } else {
-        console.error('Error fetching repositories:', response.statusText);
-      }
-    } catch (error) {
-      console.error('Error:', error);
-    }
-  }
-
   useEffect(() => {
     if (repoUrl) {
     getCommits();
     getPulls();
-    getFilesCount();
     }
   }, [repoUrl]);
-
-  
+  console.log(contributions);
   return (
     <div className="container">
       <div className="header">
-        <h3><strong>Username</strong></h3>
-        <p>repository</p>
+        <h3><strong>{user}</strong></h3>
+        <p>{repoUrl ? repoUrl.split('/')[4] : 'N/A'}</p>
       </div>
       <div className="metrics">
         <div className="stats">
           <section className="commits">
             <p>Commits</p>
-            <h1>{totalCommits}</h1>
+            <h1>{contributions}</h1>
           </section>
           <section className="comments">
-            <p>Total Files</p>
-            <h1>{filesCount}</h1>
+            <p>Comments</p>
+            <h1>{totalComments}</h1>
           </section>
           <section className="pulls">
             <p>Pull Requests</p>
