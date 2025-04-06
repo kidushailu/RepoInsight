@@ -50,6 +50,15 @@
   background-color: #dbe2f9;
 }
 
+ul button {
+  background-color: #dbe2f9;
+  border: none;
+  display: flex;
+  align-items: center;
+  border-radius: 10px;
+  
+}
+
 .repo-search {
   display: flex;
   align-items: center;

@@ -1,9 +1,8 @@
 import {React, useState} from 'react';
-import { Link, useNavigate } from 'react-router-dom';
-import { useMatch, useResolvedPath } from 'react-router-dom';
+import { Link, useNavigate, useMatch, useResolvedPath } from 'react-router-dom';
 import './Navbar.css';
 
-function Navbar() {
+function Navbar({onLogout}) {
   const [repoUrl, setRepoUrl] = useState('');
   const navigate = useNavigate();
 
@@ -13,7 +12,7 @@ function Navbar() {
 
   return (
       <nav className="nav">
-        <Link to="/" className="site-title">
+        <Link to="/home" className="site-title">
           <img width="65" height="65" src="RepoInsight-logo-pptexport.png" alt="RepoInsight logo" className="site-logo"></img>
           <span>RepoInsight</span>
         </Link>
@@ -23,10 +22,8 @@ function Navbar() {
         </div>
         <ul>
           <CustomLink to="/dashboard">Dashboard</CustomLink>
-          <CustomLink to="/individual-insights">Individual Insights</CustomLink>
           <CustomLink to="/line-modification">Line Modification</CustomLink>
-          <CustomLink to="/login">Login</CustomLink>
-          <CustomLink to="/sign-up">Sign Up</CustomLink>
+          <button onClick={() => {onLogout(); navigate('/');}}>Logout</button>
         </ul>
       </nav>
   )
