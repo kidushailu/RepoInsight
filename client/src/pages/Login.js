@@ -1,43 +1,53 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import './Login.css';
+import { useNavigate } from 'react-router-dom';
 
-function Login() {
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
+const CLIENT_ID = "Ov23ligcn6jgLrdL9kIx";
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        
-        // TODO: Handle login logic here
-        console.log('Email:', email);
-        console.log('Password:', password);
+export default function Login({onLogin}) {
+    const navigate = useNavigate();
+
+    const [rerender, setRerender] = useState(false);
+
+    useEffect(() => {
+        const queryString = window.location.search;
+        const urlParams = new URLSearchParams(queryString);
+        const code = urlParams.get('code');
+
+        if (code && (localStorage.getItem("accessToken") === null)) {
+            async function getAccessToken() {
+                await fetch(`http://localhost:4000/auth/getAccessToken?code=${code}`, {
+                    method: "GET"
+                }).then((response) => {
+                    return response.json();
+                }).then((data) => {
+                    console.log(data);
+                    if(data.access_token) {
+                        localStorage.setItem("accessToken", data.access_token);
+                        setRerender(!rerender);
+                    }
+                }).then(() => {
+                    if (localStorage.getItem('accessToken') !== null) {
+                        navigate('/home');
+                    }
+                });
+            }
+            getAccessToken();
+            onLogin();
+        }
+    }, []);
+    
+
+    function loginWithGithub() {
+        window.location.assign(`https://github.com/login/oauth/authorize?client_id=${CLIENT_ID}`);
     };
 
     return (
-        <div className="d-flex flex-column align-items-center justify-content-center vh-100">
-            <h1>Login</h1>
-            <form onSubmit={handleSubmit} className='d-flex flex-column align-items-center justify-content-center'>
-                <div>
-                    <label>Email:</label>
-                    <input
-                        type="email"
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
-                        required
-                    />
-                </div>
-                <div>
-                    <label>Password:</label>
-                    <input
-                        type="password"
-                        value={password}
-                        onChange={(e) => setPassword(e.target.value)}
-                        required
-                    />
-                </div>
-                <button type="submit">Login</button>
-            </form>
+        <div className='login-container'>
+            <h3>RepoInsight Login</h3>
+            <button onClick={loginWithGithub} className="login-button">
+                Login with Github
+            </button>    
         </div>
     );
 }
-
-export default Login;
