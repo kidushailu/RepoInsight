@@ -109,10 +109,16 @@
   border-color: #c4c6d0;
 }
 
-.user section {
+.user-link {
   display: flex;
   flex-direction: row;
-  align-items: stretch;
+  text-decoration: none;
+  color: black;
+}
+
+.user-link:hover {
+  background-color: #dbe2f9;
+  border-radius: 10px;
 }
 
 .users-list img {

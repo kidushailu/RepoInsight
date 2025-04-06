@@ -1,12 +1,12 @@
 import { BarChart, LineChart, XAxis, YAxis, Bar, Line, Tooltip, ResponsiveContainer } from "recharts";
 import { useState, useEffect } from "react";
 import './Dashboard.css';
-import { useLocation } from "react-router-dom";
+import { useLocation, Link } from "react-router-dom";
 
 export default function Dashboard() {
   const location = useLocation();
   const repoUrl = location.state?.repoUrl || "";
-  const [search, setSearch] = useState('');
+  // const [search, setSearch] = useState('');
   const [totalCommits, setTotalCommits] = useState(0);
   const [totalPulls, setTotalPulls] = useState(0);
   const [contributors, setContributors] = useState([]);
@@ -176,10 +176,10 @@ export default function Dashboard() {
           {contributors.map((contributor) => (
             <div key={contributor.id} className="user">
               <p> </p>
-              <section>
+              <Link to={"/individual-insights"} state={{ url: repoUrl, user: contributor.login, contributions: contributor.contributions }} className="user-link">
                 <img src={contributor.avatar_url} alt="user" />
                 <p>{contributor.login}</p>
-              </section>
+              </Link>
               <p>{contributor.contributions}</p>
             </div>
           ))}
