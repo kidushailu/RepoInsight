@@ -1,16 +1,17 @@
-// const { initializeFirebaseApp, getUsers } = require('./firebase.js');
 const express = require('express');
 const cors = require('cors');
 const githubAPI = require('./githubAPI');
+const githubAuth = require('./githubAuth');
+const { initializeFirebaseApp } = require('./firebase.js');
 
 const app = express();
 
 app.use(cors());
 app.use(express.json());
 
-// initializeFirebaseApp();
+initializeFirebaseApp();
 app.use('/api', githubAPI);
-
+app.use('/auth', githubAuth);
 
 const port = 4000;
 
