@@ -4,10 +4,8 @@ const fetch = (...args) =>
 const router = express.Router();
 require('dotenv').config();
 
-const CLIENT_ID = "Ov23ligcn6jgLrdL9kIx";//process.env.REACT_APP_GITHUB_AUTH_CLIENT_ID;
-const CLIENT_SECRET = "fd349d9a7e85413f22c17fefca892c5533ed6f35";//process.env.REACT_APP_GITHUB_AUTH_CLIENT_SECRET;
-
-var auth_header = '';
+const CLIENT_ID = process.env.REACT_APP_GITHUB_AUTH_CLIENT_ID;
+const CLIENT_SECRET = process.env.REACT_APP_GITHUB_AUTH_CLIENT_SECRET;
 
 router.get('/test', (req, res) => {
     res.send("this is from githubAuth.js");
