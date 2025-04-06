@@ -1,44 +1,48 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import './App.css';
 import LineModification from './pages/LineModification';
 import IndividualInsights from './pages/IndividualInsights';
 import Dashboard from './pages/Dashboard';
 import Login from './pages/Login';
-import SignUp from './pages/SignUp';
 import Navbar from './components/Navbar';
-// import Landing from './pages/Landing';
+import Landing from './pages/Landing';
+import HomePage from './pages/HomePage';
 import Footer from './components/Footer';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-function App() {
+export default function App() {
+  const [loggedIn, setLoggedIn] = useState(localStorage.getItem('accessToken') !== null);
+
+  const handleLogin = () => {
+    setLoggedIn(true);
+  };
+
+  const handleLogout = () => {
+    localStorage.removeItem("accessToken"); // Clear the access token from local storage
+    setLoggedIn(false); // Update the loggedIn state to false
+  }
+
   return (
     <div className="App">
       <Router>
-        <Navbar />
-        <div className="content">
-          <Rout />
-        </div>
-        <Footer />
+      { 
+        loggedIn ?
+        <><Navbar onLogout={handleLogout}/>
+        <Routes>
+          <Route path="/home" element={<HomePage />} />
+          <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/individual-insights" element={<IndividualInsights />} />
+          <Route path="/line-modification" element={<LineModification />} />
+        </Routes> 
+        <Footer /></>
+        :
+        <Routes>
+          <><Route path="/" element={<Landing />} />
+          <Route path="/login" element={<Login onLogin={handleLogin}/>} /></>
+        </Routes>
+      }
       </Router>
     </div>
   );
 }
-
-// Define the routes for the application
-function Rout() {
-  return (
-    <div className="routes">
-    <Routes>
-      <Route path="/" element={<h3>Home</h3>} />
-      <Route path="/dashboard" element={<Dashboard />} />
-      <Route path="/individual-insights" element={<IndividualInsights />} />
-      <Route path="/line-modification" element={<LineModification />} />
-      <Route path="/login" element={<Login />} />
-      <Route path="/sign-up" element={<SignUp />} />
-    </Routes>
-    </div>
-  );
-}
-
-export default App;
