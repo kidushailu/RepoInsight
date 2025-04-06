@@ -1,83 +1,92 @@
 import React from "react";
+import './Landing.css';
+import Image from '../images/DashBoardPage.png';
+import Login from "./Login";
 
-const Navbar = () => (
-  <nav className="flex justify-between items-center p-4 shadow-md bg-white">
-    <h1 className="text-xl font-bold">RepoInsight</h1>
-    <div className="space-x-4">
-      <a href="#" className="text-gray-700">Analyze</a>
-      <a href="#" className="text-gray-700">Features</a>
-      <a href="#" className="text-gray-700">Contact Us</a>
-      <a href="#" className="text-gray-700">Explore Insights</a>
-      <button className="bg-blue-600 text-white px-4 py-2 rounded">Sign up</button>
-    </div>
-  </nav>
-);
+const features = [
+  { title: "Instant Analysis", description: "Maintain clarity with cleaner, organized code." },
+  { title: "Repo Metrics", description: "Unlock valuable insights from your repo’s data." },
+  { title: "Data Insights", description: "Visualize key metrics for your repo’s performance." },
+  { title: "Code Clarity", description: "Get instant analytics for GitHub repositories." },
+  { title: "Activity Alerts", description: "Get notified about key repository changes." },
+  { title: "Secure Data", description: "Ensures data integrity with secure encryption." },
+  { title: "Review Offline", description: "Analyze repository data even when offline." },
+  { title: "Quick Share", description: "Seamlessly share insights from your repo analysis." },
+];
 
-const HeroSection = () => (
-  <section className="flex flex-col items-center text-center p-10 bg-gray-100">
-    <h2 className="text-4xl font-bold">Uncover Insights with RepoInsight</h2>
-    <p className="text-gray-600 max-w-2xl mt-2">
-      Unravel your repository’s potential with RepoInsight’s AI-powered analytics for enhanced understanding and visibility.
-    </p>
-    <button className="mt-4 bg-blue-600 text-white px-6 py-3 rounded">Sign up today</button>
-  </section>
-);
+const footerLinks = [
+  "About", "FAQs", "Contact Us", "Terms", "Privacy"
+];
 
-const FeaturesSection = () => {
-  const features = [
-    { title: "Instant Analysis", description: "Maintain clarity with cleaner, organized code." },
-    { title: "Repo Metrics", description: "Unlock valuable insights from your repo’s data." },
-    { title: "Data Insights", description: "Visualize key metrics for your repo’s performance." },
-    { title: "Code Clarity", description: "Get instant analytics for GitHub repositories." },
-    { title: "Activity Alerts", description: "Get notified about key repository changes." },
-    { title: "Secure Data", description: "Ensures data integrity with secure encryption." },
-    { title: "Review Offline", description: "Analyze repository data even when offline." },
-    { title: "Quick Share", description: "Seamlessly share insights from your repo analysis." },
-  ];
+const navbarLinks = [
+  "Analyze", "Features", "Contact", "Explore Insights"
+];
 
+
+export default function LandingPage() {
+  const goToLogin = () => {
+    window.location.href = '/login';;
+  }
+
+  // useEffect(() => {
+  //   const navigate = useNavigate();
+  // }, []);
+  
   return (
-    <section className="p-10">
-      <h3 className="text-2xl font-bold text-center">Your GitHub Companion</h3>
-      <p className="text-gray-600 text-center mb-6">
-        Discover how RepoInsight simplifies your GitHub experience.
-      </p>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-        {features.map((feature, index) => (
-          <div key={index} className="p-6 bg-gray-100 rounded shadow-md">
-            <h4 className="font-bold">{feature.title}</h4>
-            <p className="text-gray-600 mt-2">{feature.description}</p>
+    <div className="landing-container">
+      <nav>
+        <section>
+          <img width="65" height="65" src="RepoInsight-logo-pptexport.png" alt="RepoInsight logo" className="site-logo"/>
+          <span><strong>RepoInsight</strong></span>
+        </section>
+        <section className="navbar-links">
+          { navbarLinks.map((link, idx) => (
+            <button key={idx} className="link">{link}</button>
+          ))}
+          <button className="login-button" onClick={goToLogin}>Login with GitHub</button>
+        </section>
+      </nav>
+      <div className="content">
+        <section className="intro">
+          <div className="slogan">
+            <h1><strong>Uncover Insights with RepoInsight</strong></h1>
+            <p>Unravel your repository's potential with RepoInsights's analytics for enhanced understanding and visibility.</p>
+            <button className="login-button" onClick={goToLogin}>Login with GitHub</button>
           </div>
-        ))}
+          <div className="image">
+            <img width="500" height="auto" src={Image} alt="prototype-img"/>
+          </div>
+        </section>
+        <section className="features-section">
+          <div className="features-header">
+            <h3><strong>Your GitHub Companion</strong></h3>
+            <p>Discover how RepoInsight simplifies your GitHub experience.</p>
+          </div>
+          <div className="features">
+            { features.map((feature, idx) => (
+              <div key={idx} className="feature">
+                <h4>{feature.title}</h4>
+                <p>{feature.description}</p>
+                <button><strong>Learn more</strong></button>
+              </div>
+            ))}
+          </div>
+        </section>
       </div>
-    </section>
-  );
-};
-
-const Footer = () => (
-  <footer className="bg-gray-200 p-6 text-center">
-    <p>© 2024 RepoInsight</p>
-    <div className="mt-4 flex justify-center space-x-4 text-gray-600">
-      <a href="#">Overview</a>
-      <a href="#">Customers</a>
-      <a href="#">About</a>
-      <a href="#">Jobs</a>
-      <a href="#">FAQs</a>
-      <a href="#">Contact us</a>
-      <a href="#">Terms</a>
-      <a href="#">Privacy</a>
-    </div>
-  </footer>
-);
-
-const App = () => {
-  return (
-    <div>
-      <Navbar />
-      <HeroSection />
-      <FeaturesSection />
-      <Footer />
+      <footer>
+        <section className="footer-logo">
+          <div>
+            <img width="65" height="65" src="RepoInsight-logo-pptexport.png" alt="RepoInsight logo" className="site-logo"/>
+            <p><strong>RepoInsight</strong></p>
+          </div>
+            <p>© 2025 RepoInsight</p>
+        </section>
+        <section>
+          { footerLinks.map((link, idx) => (
+            <button key={idx} className="link">{link}</button>
+          ))}
+        </section>
+      </footer>
     </div>
   );
-};
-
-export default App;
+}
