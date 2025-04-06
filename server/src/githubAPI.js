@@ -1,10 +1,10 @@
 const express = require('express');
 const fetch = require('node-fetch');
+const { db } = require('./firebase.js')
 const router = express.Router();
 require('dotenv').config();
 
-const header = { "Authorization": `Bearer ${process.env.REACT_APP_GITHUB_API_KEY}` }
-
+const header = { "Authorization": `Bearer ${process.env.GITHUB_API_KEY}` }
 
 
 router.get('/searchRepo', async (req, res) => {
@@ -33,11 +33,8 @@ router.get('/searchRepo/commits', async(req, res) => {
             const match = linkHeader.match(/&page=(\d+)>; rel="last"/);
             if (match) data['total'] = parseInt(match[1], 10);
         }
-
         data['commits'] = await response2.json();
         res.json(data);
-        
-        
     } catch (error) {
         res.status(500).json({ error: error.message });
     }

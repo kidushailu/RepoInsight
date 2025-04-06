@@ -1,43 +1,32 @@
 const admin = require('firebase-admin');
-const bodyParser = require('body-parser');
-const { getFirestore, doc, setDoc, collection } = require('firebase/firestore');
+const express = require('express');
+const router = express.Router();
 
-const serverAccount = require('../firebaseAdminConfig.json');
+const serviceAccount = require('../firebase_creds.json');
 
 const initializeFirebaseApp = () => {
     admin.initializeApp({
-        credential: admin.credential.cert(serverAccount),
+        credential: admin.credential.cert(serviceAccount)
     });
-};
-
-const db = admin.firestore();
-
-async function getUsers() {
-    
-    try {
-        
-        const snapshot = await db.collection('testCollection').get();
-        const data = snapshot.docs.map(doc => ({
-            id: doc.id,
-            ...doc.data()
-        }));
-        return data;
-
-    } catch (error) {
-        console.error('Error initializing Firestore:', error);
-    }
 }
 
-const addUser = async (user) => {
-    try {
-        const id = user.id;
-    } catch (error) {
+const db = admin.getFirestore;
+
+module.exports = { initializeFirebaseApp, db, router };
+
+
+// async function getUsers() {
+    
+//     try {
         
-    }
-};
+//         const snapshot = await db.collection('testCollection').get();
+//         const data = snapshot.docs.map(doc => ({
+//             id: doc.id,
+//             ...doc.data()
+//         }));
+//         return data;
 
-
-module.exports = {
-    initializeFirebaseApp,
-    getUsers
-};
+//     } catch (error) {
+//         console.error('Error initializing Firestore:', error);
+//     }
+// }
