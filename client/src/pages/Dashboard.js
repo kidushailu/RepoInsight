@@ -101,6 +101,13 @@ export default function Dashboard() {
     }
   }, [repoUrl]);
 
+  useEffect(() => {
+    const storedRepos = JSON.parse(localStorage.getItem("searchedRepos")) || [];
+    if (repoUrl && !storedRepos.includes(repoUrl)) {
+      const updatedHistory = [...new Set([repoUrl, ...storedRepos])]; // no duplicates
+      localStorage.setItem("searchedRepos", JSON.stringify(updatedHistory));
+    }
+  }, []);
   
   return (
     <div className="container">
@@ -131,7 +138,7 @@ export default function Dashboard() {
             <p>Top Contributors</p>
             <strong>
               <ol>
-                {contributors.map((contributor) => (
+                {contributors.slice(0, 3).map((contributor) => (
                   <li key={contributor.id}>{contributor.login}</li>
                 ))}
               </ol>
