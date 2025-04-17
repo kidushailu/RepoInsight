@@ -19,26 +19,23 @@
 }
 
 .nav ul {
-  padding: 0;
-  margin: 0;
-  list-style: none;
   display: flex;
-  gap: 0.5rem;
+  flex-direction: row;
+  align-items: center;
+  margin: 0;
+  gap: 1rem;
 }
 
 .nav li {
   display: flex;
-  align-items: center;
-  padding: 10px 0 10px 0;
 }
 
 .nav a {
   color: inherit;
   text-decoration: none;
-  height: 100%;
   display: flex;
   align-items: center;
-  padding: 0 0.5rem 0 0.5rem;
+  padding: 10px;
   border-radius: 10px;
 }
 
@@ -51,12 +48,13 @@
 }
 
 ul button {
-  background-color: #dbe2f9;
+  background-color: #0205d3;
+  color: #ffffff;
   border: none;
   display: flex;
   align-items: center;
+  padding: 10px;
   border-radius: 10px;
-  
 }
 
 .repo-search {
@@ -69,7 +67,7 @@ ul button {
 input {
   width: 100%;
   border: 2px solid #e9e9e9;
-  padding: 2px;
+  padding: 5px;
   border-radius: 10px;
 }
 
