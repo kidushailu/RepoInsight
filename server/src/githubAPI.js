@@ -51,7 +51,6 @@ router.get('/searchRepo/commit-details', async(req, res) => {
         }
         
         const data = await response.json();
-        console.log(data);
         res.json(data);
     } catch (error) {
         res.status(500).json({ error: error.message });
