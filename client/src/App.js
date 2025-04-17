@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import './App.css';
-import LineModification from './pages/LineModification';
 import IndividualInsights from './pages/IndividualInsights';
 import Dashboard from './pages/Dashboard';
 import Login from './pages/Login';
@@ -33,7 +32,6 @@ export default function App() {
           <Route path="/home" element={<HomePage />} />
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/individual-insights" element={<IndividualInsights />} />
-          <Route path="/line-modification" element={<LineModification />} />
         </Routes> 
         <Footer /></>
         :
