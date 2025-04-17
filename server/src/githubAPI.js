@@ -40,9 +40,27 @@ router.get('/searchRepo/commits', async(req, res) => {
     }
 });
 
+router.get('/searchRepo/commit-details', async(req, res) => {
+    const { repoUrl, sha } = req.query;
+    const apiUrl = repoUrl.replace("github.com", "api.github.com/repos") + "/commits"; 
+    try {
+        const response = await fetch(apiUrl + `/${sha}`, { headers: header });
+        
+        if (!response.ok) {
+            res.status(response.status).json({ error: response.statusText });
+        }
+        
+        const data = await response.json();
+        console.log(data);
+        res.json(data);
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
+});
+
 router.get('/searchRepo/contributors', async(req, res) => {
     const { repoUrl } = req.query;
-    const apiUrl = repoUrl.replace("github.com", "api.github.com/repos") + "/contributors?per_page=3"; 
+    const apiUrl = repoUrl.replace("github.com", "api.github.com/repos") + "/contributors?per_page=100"; 
     try {
         const response = await fetch(apiUrl, { headers: header });
         if (response.ok) {
@@ -59,6 +77,22 @@ router.get('/searchRepo/contributors', async(req, res) => {
 router.get('/searchRepo/pulls', async(req, res) => {
     const { repoUrl } = req.query;
     const apiUrl = repoUrl.replace("github.com", "api.github.com/repos") + "/pulls?per_page=100"; 
+    try {
+        const response = await fetch(apiUrl, { headers: header });
+        if (response.ok) {
+            const data = await response.json();
+            res.json(data);
+        } else {
+            res.status(response.status).json({ error: response.statusText });
+        }
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
+});
+
+router.get('/searchRepo/comments', async(req, res) => {
+    const { repoUrl } = req.query;
+    const apiUrl = repoUrl.replace("github.com", "api.github.com/repos") + "/comments?per_page=100"; 
     try {
         const response = await fetch(apiUrl, { headers: header });
         if (response.ok) {
