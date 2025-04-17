@@ -44,7 +44,9 @@ span {
     display: flex;
     flex-direction: row;
     align-items: center;
+    justify-content: center;
     margin: 0 auto;
+    width: 100%;
     gap: 100px;
     padding: 20px;
     background-color: #fff;

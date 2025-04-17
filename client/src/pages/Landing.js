@@ -1,7 +1,6 @@
 import React from "react";
 import './Landing.css';
 import Image from '../images/DashBoardPage.png';
-import Login from "./Login";
 
 const features = [
   { title: "Instant Analysis", description: "Maintain clarity with cleaner, organized code." },
@@ -27,10 +26,6 @@ export default function LandingPage() {
   const goToLogin = () => {
     window.location.href = '/login';;
   }
-
-  // useEffect(() => {
-  //   const navigate = useNavigate();
-  // }, []);
   
   return (
     <div className="landing-container">
