@@ -21,9 +21,9 @@ function Navbar({onLogout}) {
           <button onClick={searchRepo}>Search</button>
         </div>
         <ul>
+          <CustomLink to="/home">Home</CustomLink>
           <CustomLink to="/dashboard">Dashboard</CustomLink>
-          <CustomLink to="/line-modification">Line Modification</CustomLink>
-          <button onClick={() => {onLogout(); navigate('/');}}>Logout</button>
+          <button className="logout-button" onClick={() => {onLogout(); navigate('/');}}>Logout</button>
         </ul>
       </nav>
   )
