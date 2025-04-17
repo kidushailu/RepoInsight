@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import './HomePage.css';
 
 export default function HomePage() {
 
     const [userData, setUserData] = useState({});
+    const [searchHistory, setSearchHistory] = useState([]);
 
     useEffect(() => {
         async function getUserData() {
@@ -28,10 +30,25 @@ export default function HomePage() {
         }
     }, []);
     
+    useEffect(() => {
+        const storedRepos = JSON.parse(localStorage.getItem("searchedRepos")) || [];
+        setSearchHistory(storedRepos);
+    }
+    , []);
 
     return (
         <div className="home-page-container">
             <h1>Welcome {userData.login}!</h1>
+            {searchHistory.length > 0 ? (
+                <div className="search-history">
+                    <h3>Recent Searches:</h3>
+                    {searchHistory.map((repo, index) => (
+                    <Link key={index} to="/dashboard" state={{ repoUrl: repo }} className="search-link">
+                        {repo}
+                    </Link>
+                    ))}
+                </div>
+            ) : <p>No search history found.</p>}
         </div>
     );
 }
