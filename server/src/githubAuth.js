@@ -56,7 +56,6 @@ router.get('/getUserData', async (req, res) => {
             throw new Error('Failed to fetch user data');
         }
     }).then((data) => {
-        console.log(data);
         res.json(data);
     });
 });
